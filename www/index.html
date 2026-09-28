@@ -28,10 +28,10 @@ body{background:var(--bg);color:var(--ink);font:15px/1.35 Arial;overflow:hidden;
 .pic span{font:700 8px Arial;letter-spacing:.08em;text-transform:uppercase}
 .pic.on{background:var(--as);color:var(--acc);border-color:var(--acc)}
 .pic:hover{color:var(--ink);border-color:var(--mut)}
-.mnav{display:flex;align-items:center;gap:7px;margin-left:auto}
+.mnav{display:flex;align-items:center;gap:6px;margin-left:auto}
 .nv{width:32px;height:32px;background:var(--p2);border:1px solid var(--l);color:var(--ink);font-size:13px;cursor:pointer;border-radius:8px}
 .nv:hover,.pl:hover{border-color:var(--acc);color:var(--acc)}
-.ml{font-family:'Arial Black',Arial;font-size:clamp(13px,1.9vw,18px);min-width:148px;text-align:center;color:var(--acc)}
+.ml{font-family:'Arial Black',Arial;font-size:clamp(13px,1.9vw,18px);min-width:148px;text-align:center;color:var(--acc);cursor:pointer}
 .pl{border:1px solid var(--l);background:var(--p2);border-radius:99px;padding:7px 12px;font:700 11px Arial;color:var(--mut);cursor:pointer}
 .mwrap{position:relative}
 .icon{width:34px;height:34px;background:var(--p2);border:1px solid var(--l);color:var(--ink);border-radius:9px;cursor:pointer;font-size:17px;font-weight:700}
@@ -70,7 +70,7 @@ body{background:var(--bg);color:var(--ink);font:15px/1.35 Arial;overflow:hidden;
 .dy.dim{opacity:.55}
 .dy.sel{box-shadow:0 0 0 2px var(--ink)}
 .dy.today{outline:2px solid var(--acc);outline-offset:-2px}
-.nm{font-family:'Arial Black',Arial;font-size:1.3em;line-height:1.1}
+.nm{font-family:'Arial Black',Arial;font-size:1.3em;line-height:1.1;font-weight:900;-webkit-text-stroke:0.5px var(--ink)}
 .tag{align-self:flex-start;font-size:.7em;font-weight:800;letter-spacing:.07em;padding:2px 4px;border-radius:3px}
 .rt{align-self:flex-start;background:var(--inp);border:1px solid var(--l);border-radius:3px;padding:0 4px;font-weight:800;font-size:.8em}
 .tm{font-size:.9em;color:var(--mut)}
@@ -85,11 +85,12 @@ body{background:var(--bg);color:var(--ink);font:15px/1.35 Arial;overflow:hidden;
 .ratebox .in{width:150px;font-size:17px;font-weight:700}
 .ratebox .lb{margin:0}
 #tabStat,#tabPay{overflow-y:auto}
-.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));gap:6px;margin:6px 0}
-.rg button{font-family:'Arial Black',Arial;font-size:13px;padding:9px 2px;background:var(--inp);border:1px solid var(--l);border-radius:7px;color:var(--ink);cursor:pointer}
+.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(66px,1fr));gap:6px;margin:6px 0}
+.rg button{font-family:'Arial Black',Arial;font-size:13px;padding:9px 2px;background:var(--inp);border:1px solid var(--l);border-radius:7px;color:var(--ink);cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rg button:hover{border-color:var(--acc);color:var(--acc)}
 .rg button.on{background:var(--acc);color:#0b0e13;border-color:var(--acc)}
 .rg button.res{font:800 10px Arial;letter-spacing:.06em;border-style:dashed}
+.rg button.add{font-size:16px;font-weight:700;color:var(--acc);border-style:dashed;border-color:var(--acc)}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
 .g2 .in{width:100%}
 textarea.in{width:100%;min-height:70px;resize:vertical;margin-top:5px}
@@ -131,6 +132,13 @@ textarea.in{width:100%;min-height:70px;resize:vertical;margin-top:5px}
 .vbody img{max-width:100%;height:auto;display:block}
 .vbody video{max-width:100%;max-height:100%}
 .vft{padding:10px 14px;border-top:1px solid var(--l);display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ypick{position:fixed;top:50%;left:50%;transform:translate(-50%,-46%) scale(.97);width:min(340px,92vw);max-height:80vh;overflow-y:auto;background:var(--p);border:1px solid var(--acc);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.25s;z-index:85;padding:14px}
+.ypick.open{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+.yh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ygrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ygrid button{padding:12px 4px;font:700 15px Arial;background:var(--inp);border:1px solid var(--l);border-radius:8px;color:var(--ink);cursor:pointer}
+.ygrid button:hover{border-color:var(--acc);color:var(--acc)}
+.ygrid button.on{background:var(--acc);color:#0b0e13;border-color:var(--acc)}
 .tb{position:relative;z-index:10;display:flex;border-top:1px solid var(--l);background:var(--p2);transition:background .3s}
 .tb button{flex:1;background:0 0;border:none;color:var(--mut);font:800 11.5px Arial;letter-spacing:.09em;padding:8px 4px 10px;cursor:pointer;border-top:3px solid transparent;display:flex;flex-direction:column;gap:2px;align-items:center}
 .tb button .ic{font-size:17px}
@@ -147,9 +155,11 @@ textarea.in{width:100%;min-height:70px;resize:vertical;margin-top:5px}
 <button type="button" class="pic" id="mt"><svg viewBox="0 0 120 62" width="56" height="29"><rect x="42" y="2" width="26" height="6" rx="2" fill="currentColor"/><line x1="55" y1="8" x2="55" y2="11" stroke="currentColor" stroke-width="4"/><rect x="5" y="10" width="104" height="33" rx="8" fill="currentColor" opacity=".15"/><rect x="5" y="10" width="104" height="33" rx="8" fill="none" stroke="currentColor" stroke-width="4"/><rect x="13" y="16" width="13" height="11" rx="2" fill="currentColor"/><rect x="30" y="16" width="13" height="11" rx="2" fill="currentColor"/><rect x="47" y="16" width="13" height="11" rx="2" fill="currentColor"/><path d="M78 14 L68 30 L74 30 L70 41 L83 25 L76 25 Z" fill="currentColor"/><rect x="88" y="16" width="14" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="30" cy="47" r="8" fill="#0d1219" stroke="currentColor" stroke-width="4"/><circle cx="84" cy="47" r="8" fill="#0d1219" stroke="currentColor" stroke-width="4"/></svg><span>Электробус</span></button>
 </div>
 <div class="mnav">
+<button class="nv" type="button" id="nmPY" title="Предыдущий год">«</button>
 <button class="nv" type="button" id="nmP">◀</button>
-<div class="ml" id="ml"></div>
+<div class="ml" id="ml" title="Выбрать год"></div>
 <button class="nv" type="button" id="nmN">▶</button>
+<button class="nv" type="button" id="nmNY" title="Следующий год">»</button>
 <button class="pl" type="button" id="gtB">Сегодня</button>
 <div class="mwrap">
 <button class="icon" type="button" id="mBtn">⋮</button>
@@ -223,14 +233,7 @@ textarea.in{width:100%;min-height:70px;resize:vertical;margin-top:5px}
 <span class="lb">Тип дня</span>
 <div class="sg"><button type="button" id="tw" data-a="dtype" data-v="work" class="on">🚦 Смена</button><button type="button" id="tf" data-a="dtype" data-v="off">🏠 Выходной</button></div>
 <div id="wf"><span class="lb" style="margin-top:10px">Номер маршрута</span>
-<div class="rg" id="rg">
-<button type="button" data-a="route" data-v="М90">М90</button><button type="button" data-a="route" data-v="639">639</button>
-<button type="button" data-a="route" data-v="661">661</button><button type="button" data-a="route" data-v="707">707</button>
-<button type="button" data-a="route" data-v="734">734</button><button type="button" data-a="route" data-v="793">793</button>
-<button type="button" data-a="route" data-v="816">816</button><button type="button" data-a="route" data-v="892">892</button>
-<button type="button" data-a="route" data-v="895">895</button><button type="button" data-a="route" data-v="985">985</button>
-<button type="button" data-a="route" data-v="993">993</button><button type="button" data-a="route" data-v="с179">с179</button>
-<button type="button" data-a="route" data-v="РЕЗЕРВ" class="res">РЕЗЕРВ</button></div>
+<div class="rg" id="rg"></div>
 <div class="g2">
 <div><span class="lb">Начало смены</span><input type="time" class="in" id="t1"></div>
 <div><span class="lb">Конец смены</span><input type="time" class="in" id="t2"></div>
@@ -257,6 +260,19 @@ textarea.in{width:100%;min-height:70px;resize:vertical;margin-top:5px}
 <div class="vbody" id="vbody"></div>
 <div class="vft"><button class="bt pr" type="button" id="vsave">💾 Сохранить на телефон</button></div>
 </div>
+<div class="scrim" id="ysc"></div>
+<div class="ypick" id="ypick">
+<div class="yh"><b>Выберите год</b><button class="bt gh" type="button" id="yclose">✕</button></div>
+<div class="ygrid" id="ygrid"></div>
+</div>
+<div class="scrim" id="rsc"></div>
+<div class="ypick" id="radd">
+<div class="yh"><b>Новый маршрут</b><button class="bt gh" type="button" id="rclose">✕</button></div>
+<input type="text" class="in" id="rinp" placeholder="например М90/422" style="width:100%">
+<div style="margin-top:12px;display:flex;gap:8px;justify-content:flex-end">
+<button class="bt pr" type="button" id="raddok">Добавить</button>
+</div>
+</div>
 <script>
 'use strict';
 function $(i){return document.getElementById(i)}
@@ -266,6 +282,7 @@ var MG=['января','февраля','марта','апреля','мая','и
 var WD=['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
 var PT={'2/2':[2,2],'5/2':[5,2],'6/1':[6,1],'4/2':[4,2]};
 var PAL=['#ffb020','#ff5d5d','#ff4d8f','#c77dff','#45c4ff','#3ddc84','#f2e8cf','#8fa0b8'];
+var PRESET=['М90','639','661','707','734','793','816','892','895','985','993','с179','РЕЗЕРВ'];
 function p2(n){return(n<10?'0':'')+n}
 function iso(d){return d.getFullYear()+'-'+p2(d.getMonth()+1)+'-'+p2(d.getDate())}
 function td(){var d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate(),12)}
@@ -324,8 +341,36 @@ reader.readAsDataURL(blob);
 try{var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download=safeName;document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(u)},5000);done(true)}catch(e){done(false)}
 }else{done(false)}
 }
-function norm(s){if(!s||typeof s!=='object')s={};if(s.mode!=='bus'&&s.mode!=='troley')s.mode='bus';if(!PT[s.pattern])s.pattern='2/2';if(!/^\d\d\d\d-\d\d-\d\d$/.test(String(s.anchor)))s.anchor=iso(td());if(!s.colors||typeof s.colors!=='object')s.colors={};if(!/^#[0-9a-fA-F]{6}$/.test(s.colors.work||''))s.colors.work='#ffb020';if(!/^#[0-9a-fA-F]{6}$/.test(s.colors.off||''))s.colors.off='#5a6b85';if(!s.shifts||typeof s.shifts!=='object')s.shifts={};if(!s.routes||typeof s.routes!=='object')s.routes={};if(typeof s.rate!=='number'||isNaN(s.rate)||s.rate<0)s.rate=0;if(typeof s.tax!=='number'||isNaN(s.tax))s.tax=13;if(s.tax<0)s.tax=0;if(s.tax>100)s.tax=100;if(typeof s.fuelDay!=='number'||s.fuelDay<0)s.fuelDay=0;if(typeof s.fuelMonth!=='number'||s.fuelMonth<0)s.fuelMonth=0;if(s.theme!=='light')s.theme='dark';if(!s.view||typeof s.view!=='object')s.view={};if(s.view.size!=='s'&&s.view.size!=='l')s.view.size='m';if(s.view.route===undefined)s.view.route=1;if(s.view.time===undefined)s.view.time=1;if(s.view.meta===undefined)s.view.meta=1;if(typeof s.bg!=='string')s.bg='';return s}
-var defS={mode:'bus',pattern:'2/2',anchor:iso(td()),colors:{work:'#ffb020',off:'#5a6b85'},rate:0,tax:13,fuelDay:0,fuelMonth:0,theme:'dark',routes:{},view:{size:'m',route:1,time:1,meta:1},bg:'',shifts:{}};
+function saveTextToPhone(filename,text,cb){
+var done=function(ok){if(cb)cb(ok)};
+var hasFS=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Filesystem;
+if(hasFS){
+var FS=window.Capacitor.Plugins.Filesystem;
+var base64;
+try{base64=btoa(unescape(encodeURIComponent(text)))}catch(e){base64=btoa(text)}
+var tryWrite=function(){
+FS.writeFile({path:'Путевой лист/'+filename,data:base64,directory:'DOCUMENTS',recursive:true})
+.then(function(){done(true)})
+.catch(function(){
+FS.writeFile({path:'Путевой лист/'+filename,data:base64,directory:'DOWNLOADS',recursive:true})
+.then(function(){done(true)}).catch(function(){done(false)})});
+};
+if(FS.requestPermissions){FS.requestPermissions().then(tryWrite).catch(tryWrite)}
+else tryWrite();
+}else{
+try{
+var blob=new Blob([text],{type:'application/json'});
+var u=URL.createObjectURL(blob);
+var a=document.createElement('a');a.href=u;a.download=filename;
+document.body.appendChild(a);a.click();
+if(a.parentNode)a.parentNode.removeChild(a);
+setTimeout(function(){URL.revokeObjectURL(u)},4000);
+done(true);
+}catch(e){done(false)}
+}
+}
+function norm(s){if(!s||typeof s!=='object')s={};if(s.mode!=='bus'&&s.mode!=='troley')s.mode='bus';if(!PT[s.pattern])s.pattern='2/2';if(!/^\d\d\d\d-\d\d-\d\d$/.test(String(s.anchor)))s.anchor=iso(td());if(!s.colors||typeof s.colors!=='object')s.colors={};if(!/^#[0-9a-fA-F]{6}$/.test(s.colors.work||''))s.colors.work='#ffb020';if(!/^#[0-9a-fA-F]{6}$/.test(s.colors.off||''))s.colors.off='#5a6b85';if(!s.shifts||typeof s.shifts!=='object')s.shifts={};if(!s.routes||typeof s.routes!=='object')s.routes={};if(!Array.isArray(s.customRoutes))s.customRoutes=[];if(typeof s.rate!=='number'||isNaN(s.rate)||s.rate<0)s.rate=0;if(typeof s.tax!=='number'||isNaN(s.tax))s.tax=13;if(s.tax<0)s.tax=0;if(s.tax>100)s.tax=100;if(typeof s.fuelDay!=='number'||s.fuelDay<0)s.fuelDay=0;if(typeof s.fuelMonth!=='number'||s.fuelMonth<0)s.fuelMonth=0;if(s.theme!=='light')s.theme='dark';if(!s.view||typeof s.view!=='object')s.view={};if(s.view.size!=='s'&&s.view.size!=='l')s.view.size='m';if(s.view.route===undefined)s.view.route=1;if(s.view.time===undefined)s.view.time=1;if(s.view.meta===undefined)s.view.meta=1;if(typeof s.bg!=='string')s.bg='';return s}
+var defS={mode:'bus',pattern:'2/2',anchor:iso(td()),colors:{work:'#ffb020',off:'#5a6b85'},rate:0,tax:13,fuelDay:0,fuelMonth:0,theme:'dark',routes:{},customRoutes:[],view:{size:'m',route:1,time:1,meta:1},bg:'',shifts:{}};
 defS.shifts[iso(td())]={type:'work',route:'М90',start:'07:40',lunch1:'12:10',lunch1e:'12:50',lunch2:'16:00',lunch2e:'16:30',end:'19:40',fuel:0,note:'Принять машину у первой смены.',color:null,files:[]};
 var S=norm(JSON.parse(sGet('putevoy.v12')||'null')||JSON.parse(JSON.stringify(defS)));
 function sv(){sSet('putevoy.v12',JSON.stringify(S))}
@@ -343,9 +388,9 @@ function di(d){var k=iso(d),e=S.shifts[k]||null;var t=e?e.type:(pw(d)?'work':'of
 function setTheme(t){S.theme=t;sv();if(t==='light')document.body.classList.add('light');else document.body.classList.remove('light');rTh();rC();toast(t==='light'?'☀️ Светлая тема':'🌙 Тёмная тема')}
 function rTh(){$('thD').className=S.theme==='light'?'':'on';$('thL').className=S.theme==='light'?'on':''}
 var SZF={s:.75,m:1,l:1.35};
-function setSize(z){S.view.size=z;sv();rSize();rC();toast('Размер ячеек обновлён')}
+function setSize(z){S.view.size=z;sv();rSize();rC();toast('Размер ячеек обновлён ✓')}
 function rSize(){$('szS').className=S.view.size==='s'?'on':'';$('szM').className=S.view.size==='m'?'on':'';$('szL').className=S.view.size==='l'?'on':''}
-function setView(k,v){S.view[k]=v?1:0;sv();rC()}
+function setView(k,v){S.view[k]=v?1:0;sv();rC();toast('Сохранено ✓')}
 function rViewCk(){$('vRoute').checked=!!S.view.route;$('vTime').checked=!!S.view.time;$('vMeta').checked=!!S.view.meta;rSize()}
 function rFuelVis(){var bus=S.mode==='bus';$('fuelSet').style.display=bus?'':'none';$('fuelWrap').style.display=bus?'':'none';$('fuelStats').style.display=bus?'':'none';$('fd').value=S.fuelDay||'';$('fm').value=S.fuelMonth||''}
 function setFD(v){S.fuelDay=Math.max(0,parseFloat(v)||0);sv();rStats()}
@@ -355,6 +400,19 @@ function rB(){var ml=S.mode==='bus'?'АВТОБУС':'ЭЛЕКТРОБУС';$('l
 var V=(function(){var d=new Date();return{y:d.getFullYear(),m:d.getMonth()}})();
 var CK=null,D=null,VF={blob:null,name:'',type:''};
 function nm(x){V.m+=x;if(V.m<0){V.m=11;V.y--}if(V.m>11){V.m=0;V.y++}rC();rStats();rPay()}
+function yearNav(x){V.y+=x;rC();rStats();rPay()}
+function openYear(){
+var g=$('ygrid');g.innerHTML='';
+var start=V.y-6,end=V.y+10;
+for(var y=start;y<=end;y++){
+(function(yy){
+var b=document.createElement('button');b.type='button';b.textContent=yy;
+if(yy===V.y)b.className='on';
+b.addEventListener('click',function(){V.y=yy;rC();rStats();rPay();closeYear()});
+g.appendChild(b)})(y)}
+$('ypick').className='ypick open';
+$('ysc').className='scrim open'}
+function closeYear(){$('ypick').className='ypick';$('ysc').className='scrim'}
 function gt(){var d=new Date();V={y:d.getFullYear(),m:d.getMonth()};rC();rStats();rPay()}
 function fitGrid(rows){var t=$('tabCal');var W=t.clientWidth-6,H=t.clientHeight-6;var gap=4,wh=26;var f=SZF[S.view.size]||1;var cell=Math.floor(Math.min((W-gap*6)/7,(H-wh-gap*rows)/rows)*f);if(cell<44)cell=44;if(cell>240)cell=240;var cols='repeat(7,'+cell+'px)';$('calbox').style.width=(cell*7+gap*6)+'px';$('wd').style.gridTemplateColumns=cols;$('gr').style.gridTemplateColumns=cols;$('gr').style.gridAutoRows=cell+'px';var fsz=Math.max(8,Math.min(18,Math.round(cell/10)));$('gr').style.setProperty('--fs',fsz+'px')}
 function rC(){
@@ -410,7 +468,7 @@ $('t4').value=e&&e.lunch2?e.lunch2:'';
 $('t4b').value=e&&e.lunch2e?e.lunch2e:'';
 $('t5').value=e&&e.fuel?e.fuel:'';
 $('nt').value=e&&e.note?e.note:'';
-rT();rR();ut();dSw();rF();
+rT();buildRoutes();ut();dSw();rF();
 $('md').className='modal open';
 $('sc').className='scrim open';
 rC();
@@ -418,25 +476,61 @@ rC();
 function ce(){$('md').className='modal';$('sc').className='scrim';CK=null;rC()}
 function sdt(t){if(D){D.t=t;rT()}}
 function rT(){$('tw').className=D.t==='work'?'on':'';$('tf').className=D.t==='off'?'on':'';$('wf').style.display=D.t==='work'?'':'none'}
-function pr(r){
+function buildRoutes(){
+var g=$('rg');g.innerHTML='';
+var all=PRESET.concat(S.customRoutes||[]);
+if(D&&D.r&&all.indexOf(D.r)<0)all=all.concat([D.r]);
+for(var i=0;i<all.length;i++){
+(function(rr){
+var b=document.createElement('button');b.type='button';b.textContent=rr;
+b.setAttribute('data-r',rr);
+if(rr==='РЕЗЕРВ')b.className='res';
+b.addEventListener('click',function(){pr2(rr)});
+g.appendChild(b)})(all[i])}
+var add=document.createElement('button');add.type='button';add.textContent='+';add.className='add';add.title='Добавить свой маршрут';
+add.addEventListener('click',function(){addRoute()});
+g.appendChild(add);
+markRouteSel()}
+function markRouteSel(){
+var g=$('rg');var bs=g.getElementsByTagName('button');
+for(var i=0;i<bs.length;i++){
+var r=bs[i].getAttribute('data-r');
+var isAdd=(bs[i].textContent==='+');
+var cls='';
+if(r==='РЕЗЕРВ')cls='res';
+if(isAdd)cls='add';
+if(r&&D&&D.r===r)cls=(cls?cls+' ':'')+'on';
+bs[i].className=cls}}
+function pr2(r){
 if(!D)return;
 D.r=D.r===r?'':r;
-rR();
+markRouteSel();
 if(D.r&&S.routes[D.r]){
 var rt=S.routes[D.r];
 var slot=isWE(CK)?'we':'wd';
 var tp=rt?rt[slot]:null;
 if(tp){
-$('t1').value=tp.start||'';
-$('t3').value=tp.lunch1||'';
-$('t3b').value=tp.lunch1e||'';
-$('t4').value=tp.lunch2||'';
-$('t4b').value=tp.lunch2e||'';
-$('t2').value=tp.end||'';
+$('t1').value=tp.start||'';$('t3').value=tp.lunch1||'';$('t3b').value=tp.lunch1e||'';$('t4').value=tp.lunch2||'';$('t4b').value=tp.lunch2e||'';$('t2').value=tp.end||'';
 ut();
 toast('Маршрут '+D.r+': '+(slot==='we'?'расписание выходного':'расписание буднего дня'));
 }}}
-function rR(){var b=$('rg').getElementsByTagName('button'),i;for(i=0;i<b.length;i++){var r=b[i].getAttribute('data-v');b[i].className=(r===D.r?'on':'')+(r==='РЕЗЕРВ'?' res':'')}}
+function addRoute(){
+$('rinp').value='';
+$('radd').className='ypick open';
+$('rsc').className='scrim open';
+setTimeout(function(){try{$('rinp').focus()}catch(e){}},200)}
+function closeRouteAdd(){$('radd').className='ypick';$('rsc').className='scrim'}
+function confirmAddRoute(){
+var name=$('rinp').value.trim();
+if(!name){toast('Введите название маршрута');return}
+var all=PRESET.concat(S.customRoutes||[]);
+for(var i=0;i<all.length;i++){if(String(all[i]).toLowerCase()===name.toLowerCase()){toast('Такой маршрут уже есть');return}}
+if(!S.customRoutes)S.customRoutes=[];
+S.customRoutes.push(name);
+sv();
+buildRoutes();
+closeRouteAdd();
+toast('Маршрут '+name+' добавлен ✓')}
 function ut(){var dr=dc($('t1').value,$('t2').value),b=$('du');var l1=dc($('t3').value,$('t3b').value);var l2=dc($('t4').value,$('t4b').value);var lt=(l1?l1.d:0)+(l2?l2.d:0);var txt='⏱ На линии: '+(dr?dr.t:'—');if(dr&&dr.o)txt+=' • через полночь';if(lt>0)txt+=' • обеды: '+fh(lt);b.textContent=txt;b.className=(dr||lt>0)?'du':'du off'}
 function dSw(){
 if(!D)return;
@@ -557,7 +651,7 @@ $('viewer').className='viewer open';
 function closeViewer(){$('viewer').className='viewer';$('vbody').innerHTML='';VF.blob=null}
 function sp(p){S.pattern=p;sv();rC();rPat();rStats();rPay();toast('График: '+p)}
 function rPat(){$('pc1').className=S.pattern==='2/2'?'on':'';$('pc2').className=S.pattern==='5/2'?'on':'';$('pc3').className=S.pattern==='6/1'?'on':'';$('pc4').className=S.pattern==='4/2'?'on':''}
-function sa(v){if(!v)return;S.anchor=v;sv();rC();rStats();rPay();toast('Цикл пересчитан')}
+function sa(v){if(!v)return;S.anchor=v;sv();rC();rStats();rPay();toast('Цикл пересчитан ✓')}
 function makeSw(cont,cur,onPick){
 cont.innerHTML='';
 var l=PAL.indexOf(cur)>=0?PAL.slice():[cur].concat(PAL);
@@ -566,11 +660,12 @@ for(var i=0;i<l.length;i++){
 var b=document.createElement('button');b.type='button';
 b.className='sw'+(String(color).toLowerCase()===String(cur).toLowerCase()?' sel':'');
 b.style.background=color;
-b.addEventListener('click',function(e){e.stopPropagation();onPick(color)});
+b.addEventListener('click',function(e){e.stopPropagation();onPick(color);toast('Сохранено ✓')});
 cont.appendChild(b)})(l[i])}
 var lbl=document.createElement('label');lbl.className='sw pk';
 var ci=document.createElement('input');ci.type='color';ci.value=cur;
 ci.addEventListener('input',function(e){e.stopPropagation();onPick(this.value)});
+ci.addEventListener('change',function(e){e.stopPropagation();toast('Сохранено ✓')});
 lbl.appendChild(ci);cont.appendChild(lbl)}
 function pickW(c){S.colors.work=c;sv();rC();makeSw($('cw'),S.colors.work,pickW)}
 function pickF(c){S.colors.off=c;sv();rC();makeSw($('cf'),S.colors.off,pickF)}
@@ -612,7 +707,13 @@ function onRate(v){S.rate=Math.max(0,parseFloat(String(v).replace(',','.'))||0);
 function onTax(v){var x=parseFloat(String(v).replace(',','.'));if(isNaN(x))x=0;if(x<0)x=0;if(x>100)x=100;S.tax=x;sv();rPay()}
 function tsel(n){var tabs=['tabCal','tabStat','tabPay'],i;for(i=0;i<3;i++){$(tabs[i]).className='tab'+(i===n?' act':'');$('tb'+i).className=i===n?'on':''}if(n===0)rC();if(n===1)rStats();if(n===2)rPay()}
 function toggleMenu(){var m=$('menu');m.className=m.className.indexOf('open')>=0?'menu':'menu open'}
-function exportData(){var data=JSON.stringify(S,null,2);var blob=new Blob([data],{type:'application/json'});var u=URL.createObjectURL(blob);var a=document.createElement('a');a.href=u;a.download='putevoy-export-'+iso(td())+'.json';document.body.appendChild(a);a.click();if(a.parentNode)a.parentNode.removeChild(a);URL.revokeObjectURL(u);toast('Экспорт сохранён ✓')}
+function exportData(){
+var data=JSON.stringify(S,null,2);
+var filename='putevoy-export-'+iso(td())+'.json';
+saveTextToPhone(filename,data,function(ok){
+if(ok)toast('Экспорт сохранён: Документы → Путевой лист ✓');
+else toast('Не удалось сохранить экспорт');
+})}
 function importData(inp){if(!inp.files||!inp.files[0])return;var reader=new FileReader();reader.onload=function(e){try{var data=JSON.parse(e.target.result);S=norm(data);migrateRoutes();sv();rAll();applyBg();toast('Данные импортированы ✓')}catch(err){toast('⚠ Ошибка чтения файла')}inp.value=''};reader.readAsText(inp.files[0])}
 function rAll(){rB();rTh();rC();rPat();rViewCk();makeSw($('cw'),S.colors.work,pickW);makeSw($('cf'),S.colors.off,pickF);rStats();rPay()}
 function walkUp(start,stop,attr){var el=start;while(el&&el!==stop){if(el.getAttribute){var v=el.getAttribute(attr);if(v)return v}el=el.parentNode}return null}
@@ -638,6 +739,8 @@ $('vMeta').addEventListener('change',function(){setView('meta',this.checked)});
 $('an').addEventListener('change',function(){sa(this.value)});
 $('fd').addEventListener('input',function(){setFD(this.value)});
 $('fm').addEventListener('input',function(){setFM(this.value)});
+$('fd').addEventListener('change',function(){toast('Сохранено ✓')});
+$('fm').addEventListener('change',function(){toast('Сохранено ✓')});
 $('bgFile').addEventListener('change',function(){handleBg(this)});
 $('impFile').addEventListener('change',function(){importData(this)});
 $('gr').addEventListener('click',function(e){
@@ -653,7 +756,6 @@ if(!a)return;
 var el=e.target,v=null;
 while(el&&el!==this){if(el.getAttribute&&el.getAttribute('data-a')===a){v=el.getAttribute('data-v');break}el=el.parentNode}
 if(a==='dtype')sdt(v);
-else if(a==='route')pr(v);
 else if(a==='save')sd();
 else if(a==='del')dx();
 else if(a==='close')ce()});
@@ -662,20 +764,30 @@ $('sc').addEventListener('click',ce);
 $('ff').addEventListener('change',function(){af(this.files);this.value=''});
 $('rate').addEventListener('input',function(){onRate(this.value)});
 $('tax').addEventListener('input',function(){onTax(this.value)});
+$('rate').addEventListener('change',function(){toast('Сохранено ✓')});
+$('tax').addEventListener('change',function(){toast('Сохранено ✓')});
 $('vclose').addEventListener('click',closeViewer);
 $('vsave').addEventListener('click',function(){
 if(VF.blob){saveFileToPhone(VF.name,VF.blob,true,function(ok){toast(ok?'Сохранено в телефон ✓':'Не удалось сохранить')})}
 else toast('Нет файла для сохранения')});
+$('nmP').addEventListener('click',function(){nm(-1)});
+$('nmN').addEventListener('click',function(){nm(1)});
+$('nmPY').addEventListener('click',function(){yearNav(-1)});
+$('nmNY').addEventListener('click',function(){yearNav(1)});
+$('ml').addEventListener('click',function(){openYear()});
+$('yclose').addEventListener('click',closeYear);
+$('ysc').addEventListener('click',closeYear);
+$('raddok').addEventListener('click',confirmAddRoute);
+$('rclose').addEventListener('click',closeRouteAdd);
+$('rsc').addEventListener('click',closeRouteAdd);
 $('tb0').addEventListener('click',function(){tsel(0)});
 $('tb1').addEventListener('click',function(){tsel(1)});
 $('tb2').addEventListener('click',function(){tsel(2)});
 $('mb').addEventListener('click',function(){sm('bus')});
 $('mt').addEventListener('click',function(){sm('troley')});
-$('nmP').addEventListener('click',function(){nm(-1)});
-$('nmN').addEventListener('click',function(){nm(1)});
 $('gtB').addEventListener('click',function(){gt()});
 document.addEventListener('click',function(){var m=$('menu');if(m.className.indexOf('open')>=0)m.className='menu'});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27){ce();closeViewer();$('menu').className='menu'}});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.keyCode===27){ce();closeViewer();closeYear();closeRouteAdd();$('menu').className='menu'}});
 window.addEventListener('resize',function(){rC()})}
 if(S.theme==='light')document.body.classList.add('light');
 setup();
