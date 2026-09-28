@@ -1,0 +1,6 @@
+{
+  "appId": "ru.driver.putevoy",
+  "appName": "Путевой лист",
+  "webDir": "www",
+  "server": { "androidScheme": "https" }
+}
